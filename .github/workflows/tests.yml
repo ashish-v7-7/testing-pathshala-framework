@@ -101,6 +101,8 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         if: github.event_name != 'pull_request'
         with:
+          # one name per attempt, so "Re-run failed jobs" does not find two github-pages artifacts
+          name: github-pages-${{ github.run_attempt }}
           path: allure-report
 
       - name: Upload the report as a zip (pull requests)
@@ -126,3 +128,5 @@ jobs:
     steps:
       - uses: actions/deploy-pages@v5
         id: deployment
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
