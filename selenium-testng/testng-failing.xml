@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failing Demo Suite">
+    <listeners>
+        <listener class-name="com.pathshala.listeners.ScreenshotListener"/>
+    </listeners>
+    <test name="Intentional Failure">
+        <groups>
+            <run>
+                <include name="failing-demo"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.pathshala.tests"/>
+        </packages>
+    </test>
+</suite>

@@ -1,0 +1,40 @@
+# Jenkins Configuration as Code for the LOCAL demo Jenkins.
+# No login: the container is published on 127.0.0.1 only and is thrown away after the demo.
+jenkins:
+  systemMessage: "Testing Ki Pathshala - local demo Jenkins (configured as code)"
+  numExecutors: 4
+  securityRealm: "none"
+  authorizationStrategy: "unsecured"
+
+unclassified:
+  location:
+    url: "${JENKINS_URL:-http://localhost:8080/}"
+
+tool:
+  allure:
+    installations:
+      - name: "allure"
+        properties:
+          - installSource:
+              installers:
+                - allureManaged:
+                    versionPolicy: "fixed"
+                    version: "2.46.2"   # Allure 2 report, downloaded from Maven Central
+
+jobs:
+  - script: >
+      pipelineJob('testing-pathshala-framework') {
+        description('Season 5 framework: Selenium + Playwright + REST Assured + Cucumber, Allure report')
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote { url('file:///repo') }
+                branch('*/main')
+              }
+            }
+            scriptPath('Jenkinsfile')
+            lightweight(true)
+          }
+        }
+      }

@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Restful Booker API">
+    <test name="API tests">
+        <groups>
+            <run>
+                <exclude name="failing-demo"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.pathshala.api.tests"/>
+        </packages>
+    </test>
+</suite>

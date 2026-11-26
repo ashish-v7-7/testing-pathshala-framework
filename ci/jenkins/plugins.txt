@@ -1,0 +1,8 @@
+workflow-aggregator:608.v67378e9d3db_1
+pipeline-stage-view:2.41
+git:5.11.0
+junit:1458.1460.vd53b_087eeb_2c
+allure-jenkins-plugin:3.0.0
+timestamper:1.30
+configuration-as-code:2150.v9cb_6a_756737e
+job-dsl:3752.vb_199526b_20c3
